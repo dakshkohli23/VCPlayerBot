@@ -123,19 +123,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(f"Play", callback_data='help_play'),
-                            InlineKeyboardButton(f"Settings", callback_data=f"help_settings"),
-                            InlineKeyboardButton(f"Recording", callback_data='help_record'),
+                            InlineKeyboardButton(f"▶️ Play", callback_data='help_play'),
+                            InlineKeyboardButton(f"⚙️ Settings", callback_data=f"help_settings"),
+                            InlineKeyboardButton(f"⏺️ Recording", callback_data='help_record'),
                         ],
                         [
-                            InlineKeyboardButton("Scheduling", callback_data="help_schedule"),
-                            InlineKeyboardButton("Controling", callback_data='help_control'),
-                            InlineKeyboardButton("Admins", callback_data="help_admin"),
+                            InlineKeyboardButton("📅 Scheduling", callback_data="help_schedule"),
+                            InlineKeyboardButton("🕹️ Controling", callback_data='help_control'),
+                            InlineKeyboardButton("🥷 Admins", callback_data="help_admin"),
                         ],
                         [
-                            InlineKeyboardButton(f"Misc", callback_data='help_misc'),
-                            InlineKeyboardButton("Config Vars", callback_data='help_env'),
-                            InlineKeyboardButton("Close", callback_data="close"),
+                            InlineKeyboardButton(f"⚗️ Misc", callback_data='help_misc'),
+                            InlineKeyboardButton("⁉️ Config Vars", callback_data='help_env'),
+                            InlineKeyboardButton("✖️ Close", callback_data="close"),
                         ],
                     ]
                     )
@@ -160,7 +160,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             
         if not query.from_user.id in admins:
             await query.answer(
-                "😒 Played Joji.mp3",
+                "🤦‍♂️",
                 show_alert=True
                 )
             return
