@@ -5,7 +5,7 @@ then
   git clone https://github.com/dakshkohli23/VCPlayerBot
 else
   echo "Cloning $BRANCH branch...."
-  git clone https://github.com/dakshkohli23/VCPlayerBot -b $BRANCH
+  git clone https://github.com/dakshkohli23/VCPlayerBot
 fi
 pip3 install -U -r requirements.txt
 echo "Starting Bot...."
