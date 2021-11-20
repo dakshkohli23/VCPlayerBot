@@ -42,7 +42,7 @@ def get_cmd(dur):
 @Client.on_inline_query()
 async def search(client, query):
     answers = []
-    if query.query == "":
+    if query.query == "ETHO_ORUTHAN_PM_VANNU":
         answers.append(
             InlineQueryResultArticle(
                 title="Deploy",
