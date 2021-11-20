@@ -1,5 +1,5 @@
 echo "Starting...."
-if [ -z $BRANCH ]
+if [ $BRANCH ]
 then
   echo "Cloning main branch...."
   else
