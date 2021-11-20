@@ -1,10 +1,13 @@
-echo "Starting...."
-if [ -z ]
+echo "Cloning Repo...."
+if [ -z $BRANCH ]
 then
-  echo "Cloning main branch...."
-  else
-  echo "Cloning branch...."
+  echo "Cloning master branch...."
+  git clone https://github.com/dakshkohli23/VCPlayerBot /VCPlayerBot
+else
+  echo "Cloning $BRANCH branch...."
+  git clone https://github.com/dakshkohli23/VCPlayerBot -b $BRANCH /VCPlayerBot
 fi
+cd /VCPlayerBot
 pip3 install -U -r requirements.txt
 echo "Starting Bot...."
 python3 main.py
