@@ -70,7 +70,7 @@ rec_filter=filters.create(dumb_it)
 @Client.on_message(reply_filter & filters.private & ~filters.bot & filters.incoming & ~filters.service & ~filters.me & ~filters.chat([777000, 454000]))
 async def reply(client, message): 
     try:
-        inline = await client.get_inline_bot_results(Config.BOT_USERNAME, "")
+        inline = await client.get_inline_bot_results(Config.BOT_USERNAME, "ETHO_ORUTHAN_PM_VANNU")
         m=await client.send_inline_bot_result(
             message.chat.id,
             query_id=inline.query_id,
