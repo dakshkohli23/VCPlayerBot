@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-# Copyright (C) @subinps
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 from .logger import LOGGER
 try:
     from pyrogram.raw.types import InputChannel
@@ -369,7 +354,7 @@ async def join_and_play(link, seek, pic, width, height):
                             audio_parameters=AudioParameters(
                                 Config.BITRATE,
                             ),
-                            additional_ffmpeg_parameters=f'-ss {start} -atend -t {end}',                        ),
+                            additional_ffmpeg_parameters=f'-ss {start} -atend -t {end}',),
                         stream_type=StreamType().pulse_stream,
                     )
                 else:
@@ -1214,8 +1199,8 @@ async def y_play(playlist):
             Config.YSTREAM=True
             Config.YPLAY=False
             if Config.IS_LOOP:
-                Config.STREAM_URL="https://www.youtube.com/watch?v=zcrUCvBD16k"
-                LOGGER.info("Starting Default Live, 24 News")
+                Config.STREAM_URL="https://www.youtube.com/watch?v=z-w5u1pKkpQ"
+                LOGGER.info("Starting Default Live, Music")
                 await start_stream()
             return False
         if Config.SHUFFLE:
@@ -1225,8 +1210,8 @@ async def y_play(playlist):
         Config.YSTREAM=True
         Config.YPLAY=False
         if Config.IS_LOOP:
-            Config.STREAM_URL="https://www.youtube.com/watch?v=zcrUCvBD16k"
-            LOGGER.info("Starting Default Live, 24 News")
+            Config.STREAM_URL="https://www.youtube.com/watch?v=z-w5u1pKkpQ"
+            LOGGER.info("Starting Default Live, Music")
             await start_stream()
         return False
 
@@ -1438,23 +1423,23 @@ sudo_filter=filters.create(sudo_users)
 
 async def get_playlist_str():
     if not Config.CALL_STATUS:
-        pl="Player is idle and no song is playing.ㅤㅤㅤㅤ"
+        pl="Player is idle and no song is playing."
     if Config.STREAM_LINK:
-        pl = f"🔈 Streaming [Live Stream]({Config.STREAM_LINK}) ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+        pl = f"🔈 Streaming [Live Stream]({Config.STREAM_LINK})"
     elif not Config.playlist:
         pl = f"🔈 Playlist is empty. Streaming [STARTUP_STREAM]({Config.STREAM_URL})ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
     else:
         if len(Config.playlist)>=25:
             tplaylist=Config.playlist[:25]
             pl=f"Listing first 25 songs of total {len(Config.playlist)} songs.\n"
-            pl += f"▶️ **Playlist**: ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n" + "\n".join([
-                f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+            pl += f"▶️ **Playlist**:\n" + "\n".join([
+                f"**{i}**. **🎧 {x[1]}**\n   ♟️**Requested By:** {x[4]}"
                 for i, x in enumerate(tplaylist)
                 ])
             tplaylist.clear()
         else:
-            pl = f"▶️ **Playlist**: ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n" + "\n".join([
-                f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}\n"
+            pl = f"▶️ **Playlist**:\n" + "\n".join([
+                f"**{i}**. **🎧 {x[1]}**\n   ♟️**Requested By:** {x[4]}\n"
                 for i, x in enumerate(Config.playlist)
             ])
     return pl
@@ -1467,8 +1452,8 @@ async def get_buttons():
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(f"🎸 Start the Player", callback_data="restart"),
-                    InlineKeyboardButton('🗑 Close', callback_data='close'),
+                    InlineKeyboardButton(f"🎧 Start Tape", callback_data="restart"),
+                    InlineKeyboardButton('✖️ Close', callback_data='close'),
                 ],
             ]
             )
@@ -1481,7 +1466,7 @@ async def get_buttons():
                 [
                     InlineKeyboardButton(f"⏯ {get_pause(Config.PAUSE)}", callback_data=f"{get_pause(Config.PAUSE)}"),
                     InlineKeyboardButton('🔊 Volume Control', callback_data='volume_main'),
-                    InlineKeyboardButton('🗑 Close', callback_data='close'),
+                    InlineKeyboardButton('✖️ Close', callback_data='close'),
                 ],
             ]
             )
@@ -1503,7 +1488,7 @@ async def get_buttons():
                 ],
                 [
                     InlineKeyboardButton('🔊 Volume Control', callback_data='volume_main'),
-                    InlineKeyboardButton('🗑 Close', callback_data='close'),
+                    InlineKeyboardButton('✖️ Close', callback_data='close'),
                 ]
             ]
             )
@@ -1518,11 +1503,11 @@ async def settings_panel():
                InlineKeyboardButton(f"{'🔂 Non Stop Playback' if Config.IS_LOOP else '▶️ Play and Leave'}", callback_data='is_loop'),
             ],
             [
-                InlineKeyboardButton("🎞 Video", callback_data=f"info_video"),
+                InlineKeyboardButton("🎞️ Video", callback_data=f"info_video"),
                 InlineKeyboardButton(f"{'📺 Enabled' if Config.IS_VIDEO else '🎙 Disabled'}", callback_data='is_video'),
             ],
             [
-                InlineKeyboardButton("🤴 Admin Only", callback_data=f"info_admin"),
+                InlineKeyboardButton("🥷 Admin", callback_data=f"info_admin"),
                 InlineKeyboardButton(f"{'🔒 Enabled' if Config.ADMIN_ONLY else '🔓 Disabled'}", callback_data='admin_only'),
             ],
             [
@@ -1538,7 +1523,7 @@ async def settings_panel():
                 InlineKeyboardButton(f"{'✅ Enabled' if Config.REPLY_PM else '🚫 Disabled'}", callback_data='reply_msg'),
             ],
             [
-                InlineKeyboardButton('🗑 Close', callback_data='close'),
+                InlineKeyboardButton('✖️ Close', callback_data='close'),
             ]
             
         ]
@@ -1570,7 +1555,7 @@ async def recorder_settings():
             InlineKeyboardButton(f"{Config.RECORDING_DUMP if Config.RECORDING_DUMP else 'Not Dumping'}", callback_data='info_recdumb'),
         ],
         [
-            InlineKeyboardButton('🗑 Close', callback_data='close'),
+            InlineKeyboardButton('✖️ Close', callback_data='close'),
         ]
         ]
     )
@@ -1590,7 +1575,7 @@ async def volume_buttons():
         ],
         [
             InlineKeyboardButton(f"🔙 Back", callback_data='volume_back'),
-            InlineKeyboardButton('🗑 Close', callback_data='close'),
+            InlineKeyboardButton('✖️ Close', callback_data='close'),
         ]
         ]
     )
