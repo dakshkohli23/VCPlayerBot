@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-# Copyright (C) @subinps
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 from utils import LOGGER
 from pyrogram import Client
 from contextlib import suppress
@@ -70,52 +55,52 @@ async def cb_handler(client: Client, query: CallbackQuery):
         admins = await get_admins(Config.CHAT)
         if query.data.startswith("info"):
             me, you = query.data.split("_")
-            text="Join @subin_works"
+            text="☄️ ᴀᴅᴍɪɴ - ᴅʟᴀɪᴢᴇ"
             if you == "volume":
                 await query.answer()
                 await query.message.edit_reply_markup(reply_markup=await volume_buttons())
                 return
             if you == "player":
                 if not Config.CALL_STATUS:
-                    return await query.answer("Not Playing anything.", show_alert=True)
+                    return await query.answer("🦕 ᴘʟᴀʏᴇʀ ɪꜱ ᴇᴍᴘᴛʏ", show_alert=True)
                 await query.message.edit_reply_markup(reply_markup=await get_buttons())
                 await query.answer()
                 return
             if you == "video":
-                text="Toggle your bot to Video / Audio Player."
+                text="🌀 𝐒𝐰𝐢𝐭𝐜𝐡 𝐁𝐨𝐭 𝐓𝐨 𝐕𝐢𝐝𝐞𝐨/𝐀𝐮𝐝𝐢𝐨 𝐏𝐥𝐚𝐲𝐞𝐫"
             elif you == "shuffle":
-                text="Enable or disable auto playlist shuffling"
+                text="🌀 𝐄𝐧𝐚𝐛𝐥𝐞/𝐃𝐢𝐬𝐚𝐛𝐥𝐞 𝐀𝐮𝐭𝐨 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 𝐒𝐡𝐮𝐟𝐟𝐥𝐢𝐧𝐠"
             elif you == "admin":
-                text="Enable to restrict the play command only for admins."
+                text="🌀 𝐒𝐰𝐢𝐭𝐜𝐡 𝐑𝐞𝐬𝐭𝐫𝐢𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐥𝐚𝐲 [𝐀𝐝𝐦𝐢𝐧 𝐎𝐧𝐥𝐲]"
             elif you == "mode":
-                text="Enabling Non- stop playback will make the player running 24 / 7 and automatic startup when restarting. "
+                text="🌀 𝐄𝐧𝐚𝐛𝐥𝐢𝐧𝐠 𝐍𝐨𝐧-𝐒𝐭𝐨𝐩 𝐏𝐥𝐚𝐲𝐛𝐚𝐜𝐤 - 𝐏𝐥𝐚𝐲𝐞𝐫 𝐰𝐨𝐫𝐤 𝟐𝟒/𝟕 & 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐜 𝐒𝐭𝐚𝐫𝐭𝐮𝐩 𝐰𝐡𝐞𝐧 𝐑𝐞𝐬𝐭𝐚𝐫𝐭"
             elif you == "title":
-                text="Enable to edit the VideoChat title to Current playing song's title."
+                text="🌀 𝐒𝐰𝐢𝐭𝐜𝐡 𝐓𝐨 𝐄𝐝𝐢𝐭 𝐕𝐂𝐚𝐥𝐥 𝐓𝐢𝐭𝐥𝐞 𝐓𝐨 𝐂𝐮𝐫𝐫𝐞𝐧𝐭 𝐏𝐥𝐚𝐲𝐢𝐧𝐠 𝐓𝐢𝐭𝐥𝐞"
             elif you == "reply":
-                text="Choose whether to auto-reply messaged for userbot. "
+                text="🌀 𝐄𝐧𝐚𝐛𝐥𝐞/𝐃𝐢𝐬𝐚𝐛𝐥𝐞 𝐀𝐮𝐭𝐨-𝐑𝐞𝐩𝐥𝐲 𝐌𝐞𝐬𝐬𝐚𝐠𝐞𝐝 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭"
             elif you == "videorecord":
-                text = "Enable to record both video and audio, if disabled only audio will be recorded."
+                text="🌀 𝐄𝐧𝐚𝐛𝐥𝐞 𝐓𝐨 𝐑𝐞𝐜𝐨𝐫𝐝 𝐕𝐢𝐝𝐞𝐨+𝐀𝐮𝐝𝐢𝐨, 𝐈𝐟 𝐃𝐢𝐬𝐚𝐛𝐥𝐞𝐝 𝐎𝐧𝐥𝐲 𝐀𝐮𝐝𝐢𝐨 𝐖𝐢𝐥𝐥 𝐁𝐞 𝐑𝐞𝐜𝐨𝐫𝐝𝐞𝐝"
             elif you == "videodimension":
-                text = "Choose the recording video's dimensions"
+                text="🌀 𝐒𝐞𝐥𝐞𝐜𝐭 𝐑𝐞𝐜𝐨𝐫𝐝𝐢𝐧𝐠 𝐕𝐢𝐝𝐞𝐨'𝐬 𝐃𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬"
             elif you == "rectitle":
-                text = "A custom title for your chat recordings, Use /rtitle command to set a title"
+                text="🌀 𝐂𝐮𝐬𝐭𝐨𝐦 𝐓𝐢𝐭𝐥𝐞 𝐅𝐨𝐫 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐭 𝐑𝐞𝐜𝐨𝐫𝐝𝐢𝐧𝐠𝐬, 𝐔𝐬𝐞 /𝐫𝐭𝐢𝐭𝐥𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐓𝐨 𝐒𝐞𝐭 𝐀 𝐓𝐢𝐭𝐥𝐞"
             elif you == "recdumb":
-                text = "A channel to which all the recordings are forwarded. Make sure The User account is admin over there. Set one using /env or /config."
+                text = "🌀 𝐀 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 𝐓𝐨 𝐖𝐡𝐢𝐜𝐡 𝐀𝐥𝐥 𝐓𝐡𝐞 𝐑𝐞𝐜𝐨𝐫𝐝𝐢𝐧𝐠𝐬 𝐀𝐫𝐞 𝐅𝐨𝐫𝐰𝐚𝐫𝐝𝐞𝐝. 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐓𝐡𝐞 𝐔𝐬𝐞𝐫 𝐀𝐜𝐜𝐨𝐮𝐧𝐭 𝐈𝐬 𝐀𝐝𝐦𝐢𝐧 𝐎𝐯𝐞𝐫 𝐓𝐡𝐞𝐫𝐞. 𝐒𝐞𝐭 𝐎𝐧𝐞 𝐔𝐬𝐢𝐧𝐠 /𝐞𝐧𝐯 𝐨𝐫 /𝐜𝐨𝐧𝐟𝐢𝐠"
             await query.answer(text=text, show_alert=True)
             return
 
 
         elif query.data.startswith("help"):
             if query.message.chat.type != "private" and query.message.reply_to_message.from_user is None:
-                return await query.answer("I cant help you here, since you are an anonymous admin, message me in private chat.", show_alert=True)
+                return await query.answer("🥷 𝐂𝐚𝐧'𝐭 𝐇𝐞𝐥𝐩 !! 𝐘𝐨𝐮 𝐀𝐫𝐞𝐧'𝐭 𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫, 𝐏𝐌", show_alert=True)
             elif query.message.chat.type != "private" and query.from_user.id != query.message.reply_to_message.from_user.id:
                 return await query.answer("Okda", show_alert=True)
             me, nyav = query.data.split("_")
             back=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Back", callback_data="help_main"),
-                        InlineKeyboardButton("Close", callback_data="close"),
+                        InlineKeyboardButton("↤ Back", callback_data="help_main"),
+                        InlineKeyboardButton("✖️ Close", callback_data="close"),
                     ],
                 ]
                 )
@@ -125,11 +110,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         [
                             InlineKeyboardButton(f"▶️ Play", callback_data='help_play'),
                             InlineKeyboardButton(f"⚙️ Settings", callback_data=f"help_settings"),
-                            InlineKeyboardButton(f"⏺️ Recording", callback_data='help_record'),
+                            InlineKeyboardButton(f"⏺️ Record", callback_data='help_record'),
                         ],
                         [
-                            InlineKeyboardButton("📅 Scheduling", callback_data="help_schedule"),
-                            InlineKeyboardButton("🕹️ Controling", callback_data='help_control'),
+                            InlineKeyboardButton("📅 Schedule", callback_data="help_schedule"),
+                            InlineKeyboardButton("🕹️ Controls", callback_data='help_control'),
                             InlineKeyboardButton("🥷 Admins", callback_data="help_admin"),
                         ],
                         [
@@ -167,7 +152,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         #scheduler stuffs
         if query.data.startswith("sch"):
             if query.message.chat.type != "private" and query.message.reply_to_message.from_user is None:
-                return await query.answer("You cant use scheduling here, since you are an anonymous admin. Schedule from private chat.", show_alert=True)
+                return await query.answer("🥷 𝐂𝐚𝐧'𝐭 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐢𝐧𝐠 𝐇𝐞𝐫𝐞!! 𝐘𝐨𝐮 𝐀𝐫𝐞𝐧'𝐭 𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫. 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞 𝐟𝐫𝐨𝐦 𝐏𝐌", show_alert=True)
             if query.message.chat.type != "private" and query.from_user.id != query.message.reply_to_message.from_user.id:
                 return await query.answer("Okda", show_alert=True)
             data = query.data
@@ -195,7 +180,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             button.append([InlineKeyboardButton(text=f"{str(month)}  {str(year_)}",callback_data=f"sch_showdate_{year_}_{k}")])
                     button = button + button_
                     button.append([InlineKeyboardButton("Close", callback_data="schclose")])
-                    await query.message.edit("Now Choose the month to schedule a voicechatㅤ ㅤㅤ", reply_markup=InlineKeyboardMarkup(button))
+                    await query.message.edit("Now Choose the month to schedule a voicechat", reply_markup=InlineKeyboardMarkup(button))
                 elif day == "none":
                     return
                 else:
@@ -260,16 +245,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 datetime_object = datetime.datetime.strptime(str(month), "%m")
                 smonth = datetime_object.strftime("%B")
                 if year == today.year and month == today.month and day == today.day and hour == today.hour and minute <= today.minute:
-                    await query.answer("I dont have a timemachine to go to past!!!.")
+                    await query.answer("🤯 ᴘᴀꜱᴛ !!! ᴀʀᴇ ʏᴏᴜ ᴏᴜᴛ ᴏꜰ ʏᴏᴜʀ ᴍɪɴᴅ")
                     return 
                 final=f"{day}th {smonth} {year} at {hour}:{minute}"
                 button=[
                     [
-                        InlineKeyboardButton("Confirm", callback_data=f"schconfirm_{year}-{month}-{day} {hour}:{minute}"),
-                        InlineKeyboardButton("Back", callback_data=f"sch_day_{year}_{month}_{day}_{hour}")
+                        InlineKeyboardButton("✅ Confirm", callback_data=f"schconfirm_{year}-{month}-{day} {hour}:{minute}"),
+                        InlineKeyboardButton("↤ Back", callback_data=f"sch_day_{year}_{month}_{day}_{hour}")
                     ],
                     [
-                        InlineKeyboardButton("Close", callback_data="schclose")
+                        InlineKeyboardButton("✖️ Close", callback_data="schclose")
                     ]
                 ]
                 data=Config.SCHEDULED_STREAM.get(f"{query.message.chat.id}_{query.message.message_id}")
@@ -311,7 +296,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             k=d
                         f.append(InlineKeyboardButton(text=f"{k}",callback_data=f"sch_month_{year_}_{month}_{d}"))
                     button.append(f)
-                button.append([InlineKeyboardButton("Close", callback_data="schclose")])
+                button.append([InlineKeyboardButton("✖️ Close", callback_data="schclose")])
                 await query.message.edit(f"Choose the day of the month you want to schedule the voicechat.\nToday is {thisday} {smonth} {tyear}. Chooosing a date preceeding today will be considered as next year {year+1}", reply_markup=InlineKeyboardMarkup(button))
 
             elif data.startswith("schconfirm"):
