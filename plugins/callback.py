@@ -124,7 +124,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         ],
                     ]
                     )
-                await query.message.edit("Showing help menu, Choose from the below options.", reply_markup=reply_markup, disable_web_page_preview=True)
+                await query.message.edit("🎩 ʜᴇʟᴘ ᴍᴇɴᴜ - ᴄʜᴏᴏꜱᴇ ꜰʀᴏᴍ ʙᴇʟᴏᴡ ᴏᴘᴛɪᴏɴꜱ", reply_markup=reply_markup, disable_web_page_preview=True)
             elif nyav == 'play':
                 await query.message.edit(Config.PLAY_HELP, reply_markup=back, disable_web_page_preview=True)
             elif nyav == 'settings':
@@ -154,7 +154,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             if query.message.chat.type != "private" and query.message.reply_to_message.from_user is None:
                 return await query.answer("🥷 𝐂𝐚𝐧'𝐭 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐢𝐧𝐠 𝐇𝐞𝐫𝐞!! 𝐘𝐨𝐮 𝐀𝐫𝐞𝐧'𝐭 𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫. 𝐒𝐜𝐡𝐞𝐝𝐮𝐥𝐞 𝐟𝐫𝐨𝐦 𝐏𝐌", show_alert=True)
             if query.message.chat.type != "private" and query.from_user.id != query.message.reply_to_message.from_user.id:
-                return await query.answer("Okda", show_alert=True)
+                return await query.answer("Okay", show_alert=True)
             data = query.data
             today = datetime.datetime.now(IST)
             smonth=today.strftime("%B")
@@ -366,11 +366,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await skip()
                 await sleep(1)
             if Config.playlist:
-                title=f"<b>{Config.playlist[0][1]}</b>\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+                title=f"<b>{Config.playlist[0][1]}</b>\n"
             elif Config.STREAM_LINK:
-                title=f"<b>Stream Using [Url]({Config.DATA['FILE_DATA']['file']})</b>ㅤ  ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+                title=f"<b>🎏 ꜱᴛʀᴇᴀᴍ ᴜʀʟ [ᴄʟɪᴄᴋ ʜᴇʀᴇ!!]({Config.DATA['FILE_DATA']['file']})</b>"
             else:
-                title=f"<b>Streaming Startup [stream]({Config.STREAM_URL})</b> ㅤ ㅤ  ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+                title=f"<b>🎏 ꜱᴛʀᴇᴀᴍɪɴɢ ꜱᴛᴀʀᴛᴜᴘ [ᴄʟɪᴄᴋ ʜᴇʀᴇ!!]({Config.STREAM_URL})</b>"
             await query.message.edit(f"<b>{title}</b>",
                 disable_web_page_preview=True,
                 reply_markup=await get_buttons()
@@ -380,7 +380,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             if not Config.playlist:
                 await query.answer("No songs in playlist", show_alert=True)
             else:
-                await query.answer("trying to restart player")
+                await query.answer("🍺 ʜᴏʟᴅ ᴍᴀʜ ʙᴇᴇʀ! ᴘʟᴀʏᴇʀ ʀᴇꜱᴛᴀʀᴛ")
                 await restart_playout()
                 await sleep(1)
             await query.message.edit_reply_markup(reply_markup=await get_buttons())
@@ -389,10 +389,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data.lower() == "mute":
             if Config.MUTED:
                 await unmute()
-                await query.answer("Unmuted stream")
+                await query.answer("🔊 ᴜɴᴍᴜᴛᴇ ꜱᴛʀᴇᴀᴍ")
             else:
                 await mute()
-                await query.answer("Muted stream")
+                await query.answer("🔇 ᴍᴜᴛᴇ ꜱᴛʀᴇᴀᴍ")
             await sleep(1)
             await query.message.edit_reply_markup(reply_markup=await volume_buttons())
 
@@ -430,10 +430,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == 'restart':
             if not Config.CALL_STATUS:
                 if not Config.playlist:
-                    await query.answer("Player is empty, starting STARTUP_STREAM.")
+                    await query.answer("🥁 ɴᴏᴛʜɪɴɢ ᴛᴏ ᴘʟᴀʏ!! ᴅᴇꜰᴀᴜʟᴛ ᴅɪꜱᴋ ɪꜱ ʟᴏᴀᴅᴇᴅ ᴜᴘ")
                 else:
-                    await query.answer('Resuming the playlist')
-            await query.answer("Restrating the player")
+                    await query.answer('🥂 ᴘʟᴀʏʟɪꜱᴛ ʀᴇꜱᴜᴍᴇ')
+            await query.answer("🍺 ʜᴏʟᴅ ᴍᴀʜ ʙᴇᴇʀ! ᴘʟᴀʏᴇʀ ʀᴇꜱᴛᴀʀᴛ")
             await restart()
             await query.message.edit(text=await get_playlist_str(), reply_markup=await get_buttons(), disable_web_page_preview=True)
 
@@ -447,7 +447,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 else:
                     vol=Config.VOLUME+10
                 if not (1 <= vol <= 200):
-                    return await query.answer("Only 1-200 range accepted.")
+                    return await query.answer("🪃 ꜱᴇᴛ ʙᴇᴛᴡᴇᴇɴ 1-200 ᴠᴏʟᴜᴍᴇ")
                 await volume(vol)
                 Config.VOLUME=vol
                 await query.message.edit_reply_markup(reply_markup=await volume_buttons())
@@ -457,7 +457,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 else:
                     vol=Config.VOLUME-10
                 if not (1 <= vol <= 200):
-                    return await query.answer("Only 1-200 range accepted.")
+                    return await query.answer("🪃 ꜱᴇᴛ ʙᴇᴛᴡᴇᴇɴ 1-200 ᴠᴏʟᴜᴍᴇ")
                 await volume(vol)
                 Config.VOLUME=vol
                 await query.message.edit_reply_markup(reply_markup=await volume_buttons())
@@ -552,11 +552,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     if query.message.reply_to_message.from_user is None:
                         pass
                     elif query.from_user.id != query.message.reply_to_message.from_user.id:
-                        return await query.answer("Okda", show_alert=True)
+                        return await query.answer("Okay", show_alert=True)
                 elif query.from_user.id in Config.ADMINS:
                     pass
                 else:
-                    return await query.answer("Okda", show_alert=True)
-                await query.answer("Menu Closed")
+                    return await query.answer("Okay", show_alert=True)
+                await query.answer("🔒 ᴍᴇɴᴜ ᴄʟᴏꜱᴇᴅ")
                 await query.message.delete()
         await query.answer()
