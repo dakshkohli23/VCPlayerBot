@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-# Copyright (C) @subinps
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 from utils import LOGGER
 from youtube_search import YoutubeSearch
 from contextlib import suppress
@@ -466,7 +451,7 @@ async def stream(client, m: Message):
             return
         if Config.msg.get('player'):
             await Config.msg['player'].delete()
-        Config.msg['player']=await msg.edit(f"[Streaming]({stream_link}) Started. ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ", disable_web_page_preview=True, reply_markup=await get_buttons())
+        Config.msg['player']=await msg.edit(f"[Streaming]({stream_link}) Started.", disable_web_page_preview=True, reply_markup=await get_buttons())
         await delete_messages([m])
         
 
@@ -501,9 +486,9 @@ async def not_chat(_, m: Message):
     else:
         buttons = [
             [
-                InlineKeyboardButton('⚡️Make Own Bot', url='https://github.com/subinps/VCPlayerBot'),
-                InlineKeyboardButton('🧩 Join Here', url='https://t.me/subin_works'),
+                InlineKeyboardButton('🥷 ꜱᴇɴꜱᴇɪ', url='https://t.me/dlaize'),
+                InlineKeyboardButton('🔮 ᴀɴɪᴍᴇ ɴᴀᴛɪᴏɴ', url='https://t.me/cartoon_seriesz'),
             ]
             ]
-        await m.reply("<b>You can't use this bot in this group, for that you have to make your own bot from the [SOURCE CODE](https://github.com/subinps/VCPlayerBot) below.</b>", disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
+        await m.reply("<b>Oi Oi Oi Nanami Oi</b>", disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
 
