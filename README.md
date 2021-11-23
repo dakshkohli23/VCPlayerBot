@@ -1,10 +1,10 @@
 # VCPlayerBot
 
-![GitHub Repo stars](https://img.shields.io/github/stars/subinps/VCPlayerBot?color=blue&style=flat)
-![GitHub issues](https://img.shields.io/github/issues/subinps/VCPlayerBot)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/subinps/VCPlayerBot)
-![GitHub contributors](https://img.shields.io/github/contributors/subinps/VCPlayerBot?style=flat)
-![GitHub forks](https://img.shields.io/github/forks/subinps/VCPlayerBot?style=flat)
+![GitHub Repo stars](https://img.shields.io/github/stars/dakshkohli23/VCPlayerBot?color=blue&style=flat)
+![GitHub issues](https://img.shields.io/github/issues/dakshkohli23/VCPlayerBot)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/dakshkohli23/VCPlayerBot)
+![GitHub contributors](https://img.shields.io/github/contributors/dakshkohli23/VCPlayerBot?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/dakshkohli23/VCPlayerBot?style=flat)
 
 Telegram bot to stream videos in telegram voicechat for both groups and channels. Supports live streams, YouTube videos and telegram media. With record stream support, Schedule streams, and many more.
 
@@ -63,7 +63,7 @@ Telegram bot to stream videos in telegram voicechat for both groups and channels
 ## Deploy to VPS
 
 ```sh
-git clone https://github.com/subinps/VCPlayerBot
+git clone https://github.com/dakshkohli23/VCPlayerBot
 cd VCPlayerBot
 pip3 install -r requirements.txt
 # <Create Variables appropriately (.env [optional])>
