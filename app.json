@@ -2,7 +2,6 @@
     "name": "VCPlayerBot",
     "description": "Telegram bot to stream video in telegram VC",
     "repository": "https://github.com/dakshkohli23/VCPlayerBot",
-    "stack": "container",
     "keywords": [
       "telegram",
       "bot",
@@ -72,7 +71,7 @@
       },
       "REPLY_MESSAGE": {
         "description": "A reply message to those who message the USER account in PM. Make it blank if you do not need this feature.",
-        "value": "",
+        "value": "Hey, Iam a bot to play music, not having time to chat with you.",
         "required": false
       }
     },
